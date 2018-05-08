@@ -129,6 +129,17 @@
 
 namespace cpplog
 {
+	
+	string getCurrenttime()
+	{
+		time_t tt = time(NULL);//这句返回的只是一个时间cuo
+		tm* t = localtime(&tt);
+		string timestamp = to_string(t->tm_year + 1900) + string("-") + to_string(t->tm_mon + 1) + string("-")
+							+ to_string(t->tm_mday) + " " + to_string(t->tm_hour) + ":" + to_string(t->tm_min) + ":" + to_string(t->tm_sec) + ":";
+		return timestamp;
+
+	}
+	
     // Our log level type.
     // NOTE: When C++11 becomes widely supported, convert this to "enum class LogLevel".
     typedef unsigned int loglevel_t;
